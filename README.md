@@ -4,7 +4,7 @@ _boigs' API gateway_
 
 ## Description
 
-nginx that acts as the API gateway for boigs' services ecosystem.
+nginx that acts as the API gateway for boigs' services ecosystem. Created following [this guide](https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71).
 
 
 ## Walkthrough
