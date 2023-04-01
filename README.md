@@ -2,6 +2,8 @@
 
 _boigs' API gateway_
 
+![](http://www.germanicmythology.com/PoeticEdda/images/BIFROST1.jpg)
+
 ## Description
 
 nginx that acts as the API gateway for boigs' services ecosystem. Created following [this guide](https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71).
