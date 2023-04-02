@@ -13,8 +13,8 @@ nginx that acts as the API gateway for boigs' services ecosystem. Created follow
 
 ### Entrypoint
 
-Using nginx's default configuration, which includes all the `*.conf` files found the `conf.d`
-folder, the entrypoint of this service is `app.conf`, which itself includes
+Using nginx's default configuration, which includes all the `*.conf` files found in
+the `conf.d` folder, the entrypoint of this service is `app.conf`, which itself includes
 other files to maintain a hierarchical and pseudo-modularized structure.
 
 ### API Gateway
