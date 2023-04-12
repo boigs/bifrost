@@ -2,22 +2,39 @@
 
 _boigs' API gateway_
 
-![](http://www.germanicmythology.com/PoeticEdda/images/BIFROST1.jpg)
+![](https://norse-mythology.org/wp-content/uploads/2012/11/Bifrost.jpg)
+
 
 ## Description
 
-nginx that acts as the API gateway for boigs' services ecosystem. Created following [this guide](https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71).
+This repository contains all the configuration for the API gateway. Continue reading
+for more details.
 
 
-## Walkthrough
+## Design
 
-### Entrypoint
+The bifrost is made up of a couple components:
+1. An nginx barebones entrypoint, running on Docker, which redirects all traffic to K8S.
+1. K8S ingress, which then routes the traffic to the appropriate service.
 
-Using nginx's default configuration, which includes all the `*.conf` files found in
-the `conf.d` folder, the entrypoint of this service is `app.conf`, which itself includes
-other files to maintain a hierarchical and pseudo-modularized structure.
+![](media/diagram.png)
 
-### API Gateway
+Implememtation details:
+- Ingress controller is [`nginx`](https://kubernetes.github.io/ingress-nginx/deploy/#minikube).
+- TLS certificates are managed with [`cert-manager`](https://github.com/cert-manager/cert-manager).
 
-As seen in [this tutorial](https://galvarado.com.mx/post/desplegar-un-api-gateway-con-nginx/),
-which is enough for the current needs of the system.
+
+## Setup
+
+Initialized with minikube ingress addon:
+
+```
+minikube addons enable ingress
+```
+
+Start the nginx entrypoint and the ingress:
+
+```
+docker compose up -d
+kubectl apply -f ingress.yml
+```
