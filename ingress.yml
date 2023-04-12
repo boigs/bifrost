@@ -4,7 +4,13 @@ metadata:
   name: test-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx"    
+    cert-manager.io/issuer: "letsencrypt-prod"
 spec:
+  tls:
+  - hosts:
+    - boigs.uk.to
+    secretName: boigs-secret
   rules:
   - host: boigs.uk.to
     http:
