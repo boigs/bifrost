@@ -19,12 +19,12 @@ The bifrost is made up of a couple components:
 
 ![](media/diagram.png)
 
-Implememtation details:
+Implementation details:
 - Ingress controller is [`nginx`](https://kubernetes.github.io/ingress-nginx/deploy/#minikube).
 - TLS certificates are managed with [`cert-manager`](https://github.com/cert-manager/cert-manager).
 
 
-## Setup
+##  Setup
 
 Enable microk8s's ingress and cert-manager addon:
 
