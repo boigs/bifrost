@@ -19,4 +19,4 @@ spec:
             service:
               name: test-service
               port:
-                number: 80ç
+                number: 80
