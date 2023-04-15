@@ -26,40 +26,16 @@ Implememtation details:
 
 ## Setup
 
-Enable minikube's ingress addon:
+Enable microk8s's ingress and cert-manager addon:
 
 ```
-minikube addons enable ingress
+microk8s enable ingress
+microk8s enable cert-manager
 ```
 
 Start everything:
 
 ```
-docker compose up -d
 kubectl apply -f cert-manager.yml
 kubectl apply -f ingress.yml
 ```
-
-Install [sniproxy](https://github.com/dlundquist/sniproxy) and run it with:
-
-```
-sudo sniproxy -c sniproxy.conf
-```
-
-### Why SNIProxy?
-
-Because we already have tech debt.
-
-Minikube should not be used for what we want to do, but instead we should opt for another
-solution like [k3s](https://k3s.io/) or [microk8s](https://microk8s.io). We cannot expose
-the ingress we have built without incurring in a lot more problems and security risks.
-
-Having said this, we can't route all the traffic through the nginx entrypoint either due to:
-- For HTTPS, nginx needs the certificate files. However, these live inside K8S and are
-managed by cert-manager.
-- We could use [ngx_stream_core_module](https://nginx.org/en/docs/stream/ngx_stream_core_module.html)
-but it's not enabled by default and nginx has to be built with a specific parameter. Also
-there are no (up-to-date) Docker images available that have this.
-
-Therefore, the easiest option we have is using SNIProxy, as seen
-[here](https://serverfault.com/q/1083973).
