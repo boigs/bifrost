@@ -12,6 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Deploy cert manager
-      run: microk8s kubectl apply -f cert-manager.yaml
+      run: microk8s kubectl apply -f cert-manager.yml
     - name: Deploy ingress
-      run: microk8s kubectl apply -f ingress.yaml
+      run: microk8s kubectl apply -f ingress.yml
