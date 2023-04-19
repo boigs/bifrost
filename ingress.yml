@@ -14,9 +14,16 @@ spec:
     http:
       paths:
         - path: /
-          pathType: Prefix
+          pathType: Exact
           backend:
             service:
               name: test-service
+              port:
+                number: 80
+        - path: /clown
+          pathType: Prefix
+          backend:
+            service:
+              name: clown-service
               port:
                 number: 80
