@@ -17,7 +17,7 @@ spec:
           pathType: Exact
           backend:
             service:
-              name: test-service
+              name: frontend-service
               port:
                 number: 80
         - path: /clown
