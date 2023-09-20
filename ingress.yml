@@ -7,23 +7,17 @@ metadata:
 spec:
   tls:
   - hosts:
-    - boigs.uk.to
+    - repeti2.com
     secretName: tls-secret-prod
   rules:
-  - host: boigs.uk.to
+  - host: repeti2.com
     http:
       paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: frontend-service
+              name: headcrab-service
               port:
                 number: 80
-        - path: /clown
-          pathType: Prefix
-          backend:
-            service:
-              name: clown-service
-              port:
-                number: 80
+
