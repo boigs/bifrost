@@ -8,26 +8,22 @@ spec:
   tls:
   - hosts:
     - repeti2.com
-    - api.repeti2.com
     secretName: tls-secret-prod
   rules:
     - host: repeti2.com
       http:
         paths:
-          - path: /
+          - path: /api
             pathType: Prefix
             backend:
               service:
                 name: headcrab-service
                 port:
                   number: 80
-    - host: api.repeti2.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: headcrab-service
-                port:
-                  number: 80
+          #- path: /
+          #  pathType: Prefix
+          #  backend:
+          #    service:
+          #      name: torii-service
+          #      port:
+          #        number: 80
