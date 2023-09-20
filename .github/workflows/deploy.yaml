@@ -10,7 +10,7 @@ jobs:
     runs-on: self-hosted
     steps:
     - name: Clone Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Deploy Certificate Manager
       run: microk8s kubectl apply -f cert-manager.yaml
     - name: Deploy Ingress
