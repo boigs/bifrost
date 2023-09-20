@@ -20,4 +20,13 @@ spec:
               name: headcrab-service
               port:
                 number: 80
-
+  - host: api.repeti2.com
+    http:
+    paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: headcrab-service
+            port:
+              number: 80
