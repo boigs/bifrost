@@ -7,10 +7,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - www.api.repeti2.com
+        - api.repeti2.com
       secretName: tls-secret-prod
   rules:
-    - host: www.api.repeti2.com
+    - host: api.repeti2.com
       http:
         paths:
           - path: /
