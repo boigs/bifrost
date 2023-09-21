@@ -3,28 +3,19 @@ kind: Ingress
 metadata:
   name: bifrost-ingress
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
   - hosts:
-    - repeti2.com
+    - www.api.repeti2.com
     secretName: tls-secret-prod
   rules:
-    - host: repeti2.com
-      http:
-        paths:
-          - path: /api(/|$)(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: headcrab-service
-                port:
-                  number: 80
-          #- path: /
-          #  pathType: Prefix
-          #  backend:
-          #    service:
-          #      name: torii-service
-          #      port:
-          #        number: 80
+  - host: www.api.repeti2.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: headcrab-service
+            port: 80
