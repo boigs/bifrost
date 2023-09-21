@@ -4,11 +4,15 @@ metadata:
   name: bifrost-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-issuer-prod
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      if ($host = 'repeti2.com' ) {
+        rewrite ^ https://www.repeti2.com$request_uri permanent;
+      }
 spec:
   tls:
     - hosts:
         - repeti2.com
-        - api.repeti2.com
+        - www.repeti2.com
       secretName: tls-secret-prod
   rules:
     - host: repeti2.com
@@ -21,7 +25,7 @@ spec:
                 name: headcrab-service
                 port:
                   number: 80
-    - host: api.repeti2.com
+    - host: www.repeti2.com
       http:
         paths:
           - path: /
