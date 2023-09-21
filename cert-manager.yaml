@@ -1,14 +1,28 @@
+# https://cert-manager.io/docs/reference/api-docs/#cert-manager.io/v1.ClusterIssuer
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-prod
+  name: letsencrypt-prod-issuer
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: tiny.desk5777@fastmail.com
     privateKeySecretRef:
-       name: letsencrypt-prod
+      name: letsencrypt-prod
     solvers:
-    - http01:
-        ingress:
-          class: public
+      - http01:
+          ingress:
+            class: public
+            
+---
+
+# https://cert-manager.io/docs/reference/api-docs/#cert-manager.io/v1.Certificate
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-prod-certificate
+spec:
+  secretName: tls-secret-prod
+  issuerRef:
+    name: letsencrypt-prod-issuer
+  commonName: '*.repeti2.com'
