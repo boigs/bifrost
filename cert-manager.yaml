@@ -8,21 +8,8 @@ spec:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: tiny.desk5777@fastmail.com
     privateKeySecretRef:
-      name: letsencrypt-prod
+      name: letsencrypt-issuer-prod
     solvers:
       - http01:
           ingress:
             class: public
-            
----
-
-# https://cert-manager.io/docs/reference/api-docs/#cert-manager.io/v1.Certificate
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: letsencrypt-certificate-prod
-spec:
-  secretName: tls-secret-prod
-  issuerRef:
-    name: letsencrypt-issuer-prod
-  commonName: '*.repeti2.com'
