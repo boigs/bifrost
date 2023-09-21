@@ -7,9 +7,20 @@ metadata:
 spec:
   tls:
     - hosts:
+        - repeti2.com
         - api.repeti2.com
       secretName: tls-secret-prod
   rules:
+    - host: repeti2.com
+      http:
+        paths:
+          - path: /health
+            pathType: Prefix
+            backend:
+              service:
+                name: headcrab-service
+                port:
+                  number: 80
     - host: api.repeti2.com
       http:
         paths:
