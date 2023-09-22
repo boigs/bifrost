@@ -4,11 +4,8 @@ metadata:
   name: bifrost-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-issuer-prod
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      if ($host = 'repeti2.com' ) {
-        rewrite ^ https://www.repeti2.com$request_uri permanent;
-      }
 spec:
   tls:
     - hosts:
