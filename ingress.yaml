@@ -11,6 +11,7 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
+        - repeti2.com
         - www.repeti2.com
       secretName: tls-secret-prod
   rules:
