@@ -13,6 +13,7 @@ spec:
     - hosts:
         - repeti2.com
         - www.repeti2.com
+        - grafana.repeti2.com
       secretName: tls-secret-prod
   rules:
     - host: www.repeti2.com
@@ -30,5 +31,15 @@ spec:
             backend:
               service:
                 name: torii-service
+                port:
+                  number: 80
+    - host: grafana.repeti2.com
+      http:
+        paths:
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: grafana-service
                 port:
                   number: 80
