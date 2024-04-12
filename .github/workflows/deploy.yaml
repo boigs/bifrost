@@ -14,5 +14,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Deploy Certificate Manager
       run: microk8s kubectl apply -f cert-manager.yaml
+    - name: Deploy Grafana DNS Service
+      run: microk8s kubectl apply -f grafana-dns.yaml
     - name: Deploy Ingress
       run: microk8s kubectl apply -f ingress.yaml
