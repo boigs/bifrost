@@ -40,6 +40,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: grafana-service
+                name: grafana-service # defined in grafana-dns.yaml
                 port:
                   number: 80
