@@ -2,7 +2,7 @@ name: K8s -> Deploy
 description: Deploys Kubernetes
 
 inputs:
-  kubernetes-file:
+  file:
     description: The Kubernetes file to deploy
     required: true
 
