@@ -1,0 +1,52 @@
+name: Bifrost
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: K8s -> Deploy
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Certificate Manager -> Test
+        uses: ./.github/actions/test-k8s
+        with:
+          file: cert-manager.yaml
+
+      - name: Grafana -> Test
+        uses: ./.github/actions/test-k8s
+        with:
+          file: grafana-dns.yaml
+
+      - name: Ingress -> Test
+        uses: ./.github/actions/test-k8s
+        with:
+          file: ingress.yaml
+
+      - name: Certificate Manager -> Deploy
+        uses: ./.github/actions/deploy-k8s
+        with:
+          file: cert-manager.yaml
+
+      - name: Grafana -> Deploy
+        uses: ./.github/actions/deploy-k8s
+        with:
+          file: grafana-dns.yaml
+
+      - name: Ingress -> Deploy
+        uses: ./.github/actions/deploy-k8s
+        with:
+          file: ingress.yaml

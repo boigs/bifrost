@@ -1,0 +1,15 @@
+name: K8s -> Deploy
+description: Deploys Kubernetes
+
+inputs:
+  kubernetes-file:
+    description: The Kubernetes file to deploy
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Deploy
+      if: github.ref_name == 'main'
+      shell: bash
+      run: microk8s kubectl apply -f ${{ inputs.kubernetes-file }}
