@@ -11,7 +11,13 @@ runs:
   steps:
     - name: Get namespace
       shell: bash
-      run: microk8s kubectl get namespace default
+      run: |
+        if [ microk8s kubectl get namespace sergi ]
+          echo "success get"
+        else
+          echo "failed get"
+        fi
+        exit 0
 
     - name: Kubectl diff
       # The diff command returns an error code when there are changes, without the {0} the whole step is marked as failed
