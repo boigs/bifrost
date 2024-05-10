@@ -12,12 +12,12 @@ runs:
     - name: Get namespace
       shell: bash
       run: |
-        if [ microk8s kubectl get namespace default ]; then
+        if [ microk8s kubectl get namespace asd ]; then
           echo "success get"
         else
           echo "failed get"
+          exit 0
         fi
-        exit 0
 
     - name: Kubectl diff
       # The diff command returns an error code when there are changes, without the {0} the whole step is marked as failed
