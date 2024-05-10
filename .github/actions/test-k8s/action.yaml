@@ -12,7 +12,7 @@ runs:
     - name: Get namespace
       shell: bash
       run: |
-        if [ microk8s kubectl get namespace sergi ]; then
+        if [ microk8s kubectl get namespace default ]; then
           echo "success get"
         else
           echo "failed get"
