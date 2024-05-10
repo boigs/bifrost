@@ -11,7 +11,7 @@ runs:
   steps:
     - name: Get namespace
       shell: bash
-      run: microk8s kubectl get namespace hola
+      run: microk8s kubectl get namespace default
 
     - name: Kubectl diff
       # The diff command returns an error code when there are changes, without the {0} the whole step is marked as failed
