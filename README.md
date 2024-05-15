@@ -13,8 +13,7 @@ for more details.
 
 ## Design
 
-The bifrost is made up of a couple components:
-1. An nginx barebones entrypoint, running on Docker, which redirects all traffic to K8S.
+The bifrost is made up of one component:
 1. K8S ingress, which then routes the traffic to the appropriate service.
 
 ![](media/diagram.png)
